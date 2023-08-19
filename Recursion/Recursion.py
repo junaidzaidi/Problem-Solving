@@ -314,4 +314,4 @@ def pemuteUtil(nums, startingIndex, res):
         pemuteUtil(nums, startingIndex+1, res)
         nums[startingIndex], nums[index] = nums[index], nums[startingIndex]
 
-print(permute([1,2,3]))
+print(permute([1,2,3,4]))
