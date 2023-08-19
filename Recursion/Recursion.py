@@ -296,6 +296,22 @@ def permute(nums):
     pemuteUtil(nums, 0, res)
     return res
 
+def pemuteUtilWithExtraSpace(self, nums, currentSelection, selected, res):
+
+    if len(currentSelection) == len(nums):
+        res.append(currentSelection.copy())
+        return
+
+    for index in range(0, len(nums)):
+        if selected[index]:
+            continue
+        
+        currentSelection.append(nums[index])
+        selected[index] = True
+        self.pemuteUtilW(nums, currentSelection, selected, res)
+        selected[index] = False
+        currentSelection.pop()
+
 def pemuteUtil(nums, startingIndex, res):
 
     if startingIndex >= len(nums):
