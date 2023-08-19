@@ -287,6 +287,31 @@ subsequence = [1,2,1,2]
 target = 2
 
 
-print(printAllSubsequenceWithTarget(0, subsequence, target))
+# print(printAllSubsequenceWithTarget(0, subsequence, target))
 # print(array)
 
+def permute(nums):
+
+    res = []
+    pemuteUtil(nums, 0, res)
+    return res
+
+def pemuteUtil(nums, startingIndex, res):
+
+    if startingIndex >= len(nums):
+        res.append(nums.copy())
+        return
+
+    '''
+        Placing every element on the first starting index
+        and incresing the starting index
+
+        This will give us all pemutations because at each index
+        their can be any element
+    '''
+    for index in range(startingIndex, len(nums)):
+        nums[startingIndex], nums[index] = nums[index], nums[startingIndex]
+        pemuteUtil(nums, startingIndex+1, res)
+        nums[startingIndex], nums[index] = nums[index], nums[startingIndex]
+
+print(permute([1,2,3]))
