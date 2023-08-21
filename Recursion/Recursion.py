@@ -289,6 +289,27 @@ target = 2
 
 # print(printAllSubsequenceWithTarget(0, subsequence, target))
 # print(array)
+def subsetSums(arr):
+    res = []
+    subsetSumUtil(arr, 0, 0, res)
+    res.sort()
+    return res
+
+def subsetSumUtil(arr, currentIndex, currentSum, res):
+    if currentIndex == len(arr):
+        # Once current index reaches out of bound append the result.
+        res.append(currentSum)
+        return
+    
+    # Picking up the element
+    subsetSumUtil(arr, currentIndex+1, currentSum, res)
+    
+    # Not picking up the element
+    subsetSumUtil(arr, currentIndex+1, currentSum+arr[currentIndex], res)
+
+
+# print(subsetSums([5, 2, 1]))
+
 
 def permute(nums):
 

@@ -25,4 +25,5 @@ def subsetSumUtil(arr, currentIndex, currentSum, res):
     subsetSumUtil(arr, currentIndex+1, currentSum+arr[currentIndex], res)
 
 
-print(subsetSums([5, 2, 1]))
+# print(subsetSums([5, 2, 1]))
+print(2//3)
