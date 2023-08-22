@@ -59,16 +59,47 @@ class BST:
 
 
     
-root = BST()
-root.addNode(4)
-root.addNode(3)
-root.addNode(5)
-root.addNode(2)
-root.addNode(510)
-root.addNode(15)
-root.addNode(-5)
-root.printAllLeaves()
+# root = BST()
+# root.addNode(4)
+# root.addNode(3)
+# root.addNode(5)
+# root.addNode(2)
+# root.addNode(510)
+# root.addNode(15)
+# root.addNode(-5)
+# root.printAllLeaves()
 
+def levelOrder(self, root):
+
+    '''
+        Can be done with bfs or dfs
+        BFS is more suitable for this type of question
+        We will carry the level with the node in the queue
+        We will check if the level is greater than result array
+        If it is greater we would append a new array in result
+        Add the current element to the array at that level
+        Continue BFS
+    '''
+
+    if not root:
+        return []
     
+    queue = deque()
+    queue.append((root, 1))
 
-            
+    res = []
+    while queue:
+
+        currentElement, level = queue.popleft()
+        if level > len(res):
+            res.append([])
+        
+        res[level-1].append(currentElement.val)
+
+        if currentElement.left:
+            queue.append((currentElement.left, level+1))
+        
+        if currentElement.right:
+            queue.append((currentElement.right, level+1))
+
+    return res
