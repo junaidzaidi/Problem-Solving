@@ -1,4 +1,5 @@
 
+from collections import deque
 class TreeNode:
 
     def __init__(self, value = 0, left = None, right = None) -> None:
@@ -87,14 +88,14 @@ def levelOrder(self, root):
     queue = deque()
     queue.append((root, 1))
 
-    res = []
+    result = []
     while queue:
 
         currentElement, level = queue.popleft()
-        if level > len(res):
-            res.append([])
+        if level > len(result):
+            result.append([])
         
-        res[level-1].append(currentElement.val)
+        result[level-1].append(currentElement.val)
 
         if currentElement.left:
             queue.append((currentElement.left, level+1))
@@ -102,4 +103,5 @@ def levelOrder(self, root):
         if currentElement.right:
             queue.append((currentElement.right, level+1))
 
-    return res
+    return result
+
