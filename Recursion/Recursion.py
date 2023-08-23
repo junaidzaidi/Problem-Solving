@@ -340,10 +340,10 @@ def permute(nums):
     pemuteUtil(nums, 0, res)
     return res
 
-def pemuteUtilWithExtraSpace(self, nums, currentSelection, selected, res):
+def pemuteUtilWithExtraSpace(self, nums, currentSelection, selected, result):
 
     if len(currentSelection) == len(nums):
-        res.append(currentSelection.copy())
+        result.append(currentSelection.copy())
         return
 
     for index in range(0, len(nums)):
@@ -352,14 +352,14 @@ def pemuteUtilWithExtraSpace(self, nums, currentSelection, selected, res):
         
         currentSelection.append(nums[index])
         selected[index] = True
-        self.pemuteUtilW(nums, currentSelection, selected, res)
+        self.pemuteUtilW(nums, currentSelection, selected, result)
         selected[index] = False
         currentSelection.pop()
 
-def pemuteUtil(nums, startingIndex, res):
+def pemuteUtil(nums, startingIndex, result):
 
     if startingIndex >= len(nums):
-        res.append(nums.copy())
+        result.append(nums.copy())
         return
 
     '''
@@ -371,7 +371,7 @@ def pemuteUtil(nums, startingIndex, res):
     '''
     for index in range(startingIndex, len(nums)):
         nums[startingIndex], nums[index] = nums[index], nums[startingIndex]
-        pemuteUtil(nums, startingIndex+1, res)
+        pemuteUtil(nums, startingIndex+1, result)
         nums[startingIndex], nums[index] = nums[index], nums[startingIndex]
 
 print(permute([1,2,3,4]))
